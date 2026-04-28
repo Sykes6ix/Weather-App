@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="stylesheet" href="style.css">
+  
+  <title> Weather app</title>
+
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.svg" alt="logo">
+   </div>
+
+    <div class="units">
+      <button class="drop-down">  
+        <img src="assets/images/icon-units.svg" alt="gear-icon">
+        <span>Units</span>
+        <img src="assets/images/icon-dropdown.svg" alt="arrow-down-icon">
+      </button>
+
+
+    </div>
+  </header>
+
+  <main>
+    <div class="heading" id="heading"> 
+      <h1>
+        How's the sky looking today?
+      </h1>
+    </div>
+
+    <div class="search-bar">
+       
+      <!-- <img src="assets/images/icon-search.svg" alt="search-icon"> -->
+
+      <input type="text" id="city" placeholder="Search for a place...">
+
+      <button class="search" type="submit" id="search">Search</button>
+
+    </div>
+
+    <div class="error-state" style="display: none;">
+      <img src="assets/images/icon-error.svg" alt="error-image">
+      <h1>Something went wrong</h1>
+      <p>We couldn't connect to the server(API error). Please try again in a few moments.</p>
+      <button class="retry" id="retry">
+        <img src="assets/images/icon-retry.svg" alt="retry-icon">
+        <span>Retry</span>
+      </button>
+
+    </div>
+
+    <div class="weather-parent" id="weather-parent">
+
+      <div class="weather-left">
+        <div class="germany">
+          <div class="current-date">
+            <p id="city-name"> Berlin, Germany <span id="day-date">Tuesday, Aug 5, 2025</span></p>
+          </div>
+
+          <div class="temp">
+            <img id="weather-icon" src="assets/images/icon-sunny.webp" alt="sun-icon">
+            <span id="current-temperature">20°</span>
+          </div>
+          
+        </div>
+        <div class="measurements">
+          <div class="div">
+            <div>
+              <h1>Feels like</h1>
+              <p id="feels-like">18°</p>
+          </div>
+
+          </div>
+          <div class="div">
+            <div>
+              <h1>Humidity</h1>
+              <p id="humidity">46%</p>
+           </div>
+          </div>
+
+          <div class="div">
+            <div>
+              <h1>Wind</h1>
+              <p id="wind">14 km/hr</p>
+           </div>
+          </div>
+
+          <div class="div">
+            <div>
+              <h1>Precipitation</h1>
+              <p id="precipitation">0 mm</p>
+           </div>
+          </div>
+       </div>
+       <div class="daily-f">
+           <p>Daily forecast</p>
+        </div>
+
+        <div class="daily-forecast">
+          <div class="tue">
+            <h1 id="day-0">Tue</h1>
+            <img id="icon-0" src="assets/images/icon-drizzle.webp" alt="drizzle-cloud">
+            <div class="degrees">
+              <div class="degrees-left">
+                <p id="max-0" class="max">20°</p>
+            </div>
+              <div class="degrees-right">
+                <p id="min-0" class="min">14°</p>
+            </div>
+            </div>
+          </div>
+
+          <div class="tue">
+            <h1 id="day-1">Wed</h1>
+            <img id="icon-1" src="assets/images/icon-rain.webp" alt="drizzle-cloud">
+            <div class="degrees">
+              <div class="degrees-left">
+               <p id="max-1" class="max">21°</p>
+            </div>
+              <div class="degrees-right">
+               <p id="min-1" class="min">15°</p>
+           </div>
+          </div>
+
+          
+
+
+          
+        </div>
+        <div class="tue">
+          <h1 id="day-2">Thu</h1>
+          <img id="icon-2" src="assets/images/icon-sunny.webp" alt="drizzle-cloud">
+          <div class="degrees">
+            <div class="degrees-left">
+            <p id="max-2" class="max">24°</p>
+          </div>
+          <div class="degrees-right">
+            <p id="min-2" class="min">15°</p>
+          </div>
+          </div>
+          
+        </div>
+
+        <div class="tue">
+          <h1 id="day-3">Fri</h1>
+          <img id="icon-3" src="assets/images/icon-partly-cloudy.webp" alt="drizzle-cloud">
+          <div class="degrees">
+            <div class="degrees-left">
+            <p id="max-3" class="max">25°</p>
+          </div>
+          <div class="degrees-right">
+            <p id="min-3" class="min">13°</p>
+          </div>
+          </div>
+          
+        </div>
+
+        <div class="tue">
+          <h1 id="day-4">Sat</h1>
+          <img id="icon-4" src="assets/images/icon-storm.webp" alt="drizzle-cloud">
+          <div class="degrees">
+            <div class="degrees-left">
+            <p id="max-4" class="max">21°</p>
+          </div>
+          <div class="degrees-right">
+            <p id="min-4" class="min">15°</p>
+          </div>
+          </div>
+          
+        </div>
+
+        <div class="tue">
+          <h1 id="day-5">Sun</h1>
+          <img id="icon-5" src="assets/images/icon-snow.webp" alt="drizzle-cloud">
+          <div class="degrees">
+            <div class="degrees-left">
+            <p id="max-5" class="max">25°</p>
+          </div>
+          <div class="degrees-right">
+            <p id="min-5" class="min">16°</p>
+          </div>
+          </div>
+          
+        </div>
+
+        <div class="tue">
+          <h1 id="day-6">Mon</h1>
+          <img id="icon-6" src="assets/images/icon-fog.webp" alt="drizzle-cloud">
+          <div class="degrees"><div class="degrees-left">
+            <p id="max-6" class="max">24°</p>
+          </div>
+          <div class="degrees-right">
+            <p id="min-6" class="min">15°</p>
+          </div></div>
+          
+
+
+
+        </div>
+
+        </div>
+
+
+
+      </div>
+
+
+      <div class="weather-right">
+          <div class="hour-forecast">
+            <div class="hourly-forecast">
+              <p> Hourly forecast</p>
+              <select id="day-selector" class="day">
+                <option value="0">Tuesday</option>
+                <option value="1">Wednesday</option>
+                <option value="2">Thursday</option>
+                <option value="3">Friday</option>
+                <option value="4">Saturday</option>
+              </select>
+            </div>
+        </div>
+
+        
+      <div class="hour-forecast-details">
+          
+          <div class="weather-detail">
+            <img id="hour-icon-0" src="assets/images/icon-overcast.webp">
+            <p id="hour-time-0">3 PM <span id="hour-temp-0">20°</span></p>  
+          </div>
+
+          <div class="weather-detail">
+            <img id="hour-icon-1" src="assets/images/icon-partly-cloudy.webp">
+            <p id="hour-time-1">4 PM <span id="hour-temp-1">20°</span></p> 
+          </div>
+
+          <div class="weather-detail">
+            <img id="hour-icon-2" src="assets/images/icon-sunny.webp">
+            <p id="hour-time-2">5 PM <span id="hour-temp-2">20°</span></p> 
+          </div>
+
+          <div class="weather-detail">
+            <img id="hour-icon-3" src="assets/images/icon-overcast.webp">
+            <p id="hour-time-3">6 PM <span id="hour-temp-3">19°</span></p> 
+          </div>
+
+          <div class="weather-detail">
+            <img id="hour-icon-4" src="assets/images/icon-snow.webp">
+            <p id="hour-time-4">7 PM <span id="hour-temp-4">18°</span></p> 
+          </div>
+
+          <div class="weather-detail">
+            <img id="hour-icon-5" src="assets/images/icon-fog.webp">
+            <p id="hour-time-5">8 PM <span id="hour-temp-5">18°</span></p> 
+          </div>
+
+          <div class="weather-detail">
+            <img id="hour-icon-6" src="assets/images/icon-snow.webp">
+            <p id="hour-time-6">9 PM <span id="hour-temp-6">17°</span></p> 
+          </div>
+
+          <div class="weather-detail">
+            <img id="hour-icon-7" src="assets/images/icon-overcast.webp">
+            <p id="hour-time-7">10 PM <span id="hour-temp-7">17°</span></p> 
+          </div>
+       </div>
+
+        
+      </div>
+
+    </div>
+    
+    
+
+  </main>
+
+ 
+
+
+  
+  <!--<div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>-->
+  <script src="code.js"></script>
+</body>
+</html>
