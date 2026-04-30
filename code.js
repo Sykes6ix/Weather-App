@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const precipitation = document.getElementById('precipitation');
   const weatherIcon = document.getElementById('weather-icon');
   const errorDiv = document.querySelector('.error-state');
+  const noRes = document.getElementById('no-results');
   const weatherParent = document.getElementById('weather-parent');
   const heading = document.querySelector('.heading');
   const searchBar = document.getElementById('search-bar');
@@ -183,6 +184,13 @@ async function fetchWeatherData(city) {
 cityInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     searchButton.click();
+  }
+});
+
+searchButton.addEventListener('click', () => {
+  const city = cityInput.value.trim();
+  if (city) {
+    fetchWeatherData(city);
   }
 });
 
