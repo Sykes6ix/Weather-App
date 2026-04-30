@@ -13,7 +13,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorDiv = document.querySelector('.error-state');
   const weatherParent = document.getElementById('weather-parent');
   const heading = document.querySelector('.heading');
+  const searchBar = document.getElementById('search-bar');
   const daySelector = document.getElementById('day-selector');
+
+  // Units dropdown toggle
+  const unitsToggle = document.getElementById('units-toggle');
+  const unitsMenu = document.getElementById('units-menu');
+  
+  if (unitsToggle && unitsMenu) {
+    unitsToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      unitsMenu.classList.toggle('active');
+      unitsToggle.querySelector('.dropdown-arrow').classList.toggle('rotated');
+    });
+    
+    document.addEventListener('click', () => {
+      unitsMenu.classList.remove('active');
+      unitsToggle.querySelector('.dropdown-arrow')?.classList.remove('rotated');
+    });
+    
+    unitsMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
 
   const apiKey = "3ad89cb32fa9047bcc9dcc4004b1eb3e";
   const units = "metric";
@@ -77,8 +99,9 @@ async function fetchWeatherData(city) {
 
     // show weather, hide error
     errorDiv.style.display = 'none';
-    weatherParent.style.display = 'block';
-    heading.style.display = 'none';
+    searchBar.style.display = 'flex';
+    weatherParent.style.display = '';
+    heading.style.display = 'flex';
 
     // current weather
     currentTemperature.textContent = `${Math.floor(weatherData.main.temp)}°C`;
@@ -129,11 +152,17 @@ async function fetchWeatherData(city) {
 
   } catch (error) {
     console.error('Error fetching weather data:', error);
-    errorDiv.style.display = 'block';
+    errorDiv.style.display = 'flex';
+    searchBar.style.display = 'flex';
     weatherParent.style.display = 'none';
-    heading.style.display = 'none';
+    heading.style.display = 'flex';
   }
 }
+cityInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    searchButton.click();
+  }
+});
 
 searchButton.addEventListener('click', () => {
   const city = cityInput.value.trim();
@@ -145,4 +174,15 @@ searchButton.addEventListener('click', () => {
 });
 
 dayDate.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+
+  // Retry button functionality
+  const retryButton = document.getElementById('retry');
+  if (retryButton) {
+    retryButton.addEventListener('click', () => {
+      const lastCity = cityInput.value.trim();
+      if (lastCity) {
+        fetchWeatherData(lastCity);
+      }
+    });
+  }
 });

@@ -16,13 +16,36 @@
    </div>
 
     <div class="units">
-      <button class="drop-down">  
-        <img src="assets/images/icon-units.svg" alt="gear-icon">
-        <span>Units</span>
-        <img src="assets/images/icon-dropdown.svg" alt="arrow-down-icon">
-      </button>
-
-
+      <div class="units-dropdown">
+        <button class="drop-down" id="units-toggle"> 
+          <img src="assets/images/icon-units.svg" alt="units-icon">
+          <span>Units</span>
+          <img class="dropdown-arrow" src="assets/images/icon-dropdown.svg" alt="arrow">
+        </button>
+        <div class="units-menu" id="units-menu">
+          <div class="units-group">
+            <label>Temperature</label>
+            <select id="temp-unit">
+              <option value="metric">Celsius (°C)</option>
+              <option value="imperial">Fahrenheit (°F)</option>
+            </select>
+          </div>
+          <div class="units-group">
+            <label>Wind Speed</label>
+            <select id="wind-unit">
+              <option value="metric">km/h</option>
+              <option value="imperial">mph</option>
+            </select>
+          </div>
+          <div class="units-group">
+            <label>Precipitation</label>
+            <select id="precip-unit">
+              <option value="metric">mm</option>
+              <option value="imperial">in</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -33,7 +56,7 @@
       </h1>
     </div>
 
-    <div class="search-bar">
+    <div id="search-bar" class="search-bar">
        
       <!-- <img src="assets/images/icon-search.svg" alt="search-icon"> -->
 
@@ -41,6 +64,9 @@
 
       <button class="search" type="submit" id="search">Search</button>
 
+    </div>
+    <div class="no-results" id="no-results" style="display: none;">
+      <p>No search result found!</p>
     </div>
 
     <div class="error-state" style="display: none;">

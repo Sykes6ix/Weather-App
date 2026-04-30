@@ -60,6 +60,60 @@ header{
     height: 10px;
     width: 10px;
 }
+.dropdown-arrow{
+    transition: transform 0.2s ease;
+}
+
+.dropdown-arrow.rotated{
+    transform: rotate(180deg);
+}
+
+.units-dropdown{
+    position: relative;
+}
+
+.units-menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--Neutral-800);
+    border-radius: 6px;
+    padding: 12px;
+    min-width: 180px;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.units-menu.active{
+    display: block;
+}
+
+.units-group{
+    margin-bottom: 12px;
+}
+
+.units-group:last-child{
+    margin-bottom: 0;
+}
+
+.units-group label{
+    display: block;
+    color: var(--Neutral-300);
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+}
+
+.units-group select{
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid var(--Neutral-600);
+    background-color: var(--Neutral-700);
+    color: var(--Neutral-0);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
 
 .heading{
     display: flex;
@@ -76,15 +130,29 @@ header{
     font-weight: 700; 
     font-size: 3rem;
 }
-.error-state{
+  .no-results{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    font-family: "DM Sans", sans-serif;
+    color: var(--Neutral-200);
+  }
+ 
+.error-state{
+    display: none;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-
+    text-align: center;
+    padding: 40px 20px;
+    min-height: 50vh;
 }
 .error-state img {
     width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .error-state h1{
     text-align: center;
@@ -101,22 +169,24 @@ header{
 }
 .retry{
     background-color: var(--Neutral-600);
-    padding: 12px;
+    padding: 12px 24px;
     color: var(--Neutral-200);
     border: none;
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: baseline;
-    gap: 6px;
-    font-size: .75rem;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1rem;
     cursor: pointer;
+    margin-top: 20px;
 }
 .retry img{
-    width: 10px;
+    width: 16px;
+    height: 16px;
 }
 .search-bar{
-    display: grid;
+    display: flex;
     box-sizing: border-box;
     gap: 8px;
     /* outline: 1px solid red; */
@@ -162,6 +232,7 @@ input:hover{
 .search:hover {
     background-color: var(--Blue-700);
 }
+
  main {
     max-width: 94%;
     margin: 0 auto;
@@ -268,6 +339,7 @@ input:hover{
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      gap: 8px;
+     margin-bottom: 20px;
 
 }
 .daily-f{
@@ -393,6 +465,7 @@ input:hover{
         margin: 0;
         padding: 5px;
     }
+
     
      main{
         width: 82%;
@@ -401,6 +474,12 @@ input:hover{
         
 
      }
+      .error-state{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+     } 
 
     .heading h1{
         text-align: center;
@@ -533,6 +612,8 @@ input:hover{
         align-items: start;
 
     }
+
+
     
 
     
