@@ -8,7 +8,8 @@ A responsive weather application that lets users search for a city and view curr
 
 ## 📸 Screenshot
 
-<img width="508" height="397" alt="Weather App Screenshot" src="https://github.com/user-attachments/assets/061be7f4-3e83-402b-924e-2642e38f86ad" />
+<img width="577" height="395" alt="App Screenshot" src="https://github.com/user-attachments/assets/3f4208ba-3543-4c76-b315-23fc8a061eab" />
+
 
 
 ---
