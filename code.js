@@ -88,17 +88,39 @@ async function fetchWeatherData(city) {
   try {
     // current weather
     const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`);
-    if (!weatherRes.ok) throw new Error('Bad response');
+    if (!weatherRes.ok) {
+      if (weatherRes.status === 404) {
+        // City not found - show no results message
+        const noRes = document.getElementById('no-results');
+        noRes.style.display = 'block';
+        weatherParent.style.display = 'none';
+        errorDiv.style.display = 'none';
+        heading.style.display = 'flex';
+        return;
+      }
+      throw new Error('Bad response');
+    }
     const weatherData = await weatherRes.json();
     console.log('Current weatherData:',weatherData);
 
     // forecast (daily + hourly)
     const forecastRes = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`);
-    if (!forecastRes.ok) throw new Error('Bad response');
+    if (!forecastRes.ok) {
+      if (forecastRes.status === 404) {
+        const noRes = document.getElementById('no-results');
+        noRes.style.display = 'block';
+        weatherParent.style.display = 'none';
+        errorDiv.style.display = 'none';
+        heading.style.display = 'flex';
+        return;
+      }
+      throw new Error('Bad response');
+    }
     const forecastData = await forecastRes.json();
 
     // show weather, hide error
     errorDiv.style.display = 'none';
+    noRes.style.display = 'none';
     searchBar.style.display = 'flex';
     weatherParent.style.display = '';
     heading.style.display = 'flex';
@@ -153,9 +175,9 @@ async function fetchWeatherData(city) {
   } catch (error) {
     console.error('Error fetching weather data:', error);
     errorDiv.style.display = 'flex';
-    searchBar.style.display = 'flex';
+    searchBar.style.display = 'none';
     weatherParent.style.display = 'none';
-    heading.style.display = 'flex';
+    heading.style.display = 'none';
   }
 }
 cityInput.addEventListener('keypress', (e) => {
@@ -164,14 +186,6 @@ cityInput.addEventListener('keypress', (e) => {
   }
 });
 
-searchButton.addEventListener('click', () => {
-  const city = cityInput.value.trim();
-  if (city) {
-    fetchWeatherData(city);
-    cityName.firstChild.textContent = city + " ";
-    cityInput.value = city[0].toUpperCase() + city.slice(1);
-  }
-});
 
 dayDate.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 
