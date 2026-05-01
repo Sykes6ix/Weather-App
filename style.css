@@ -136,7 +136,8 @@ header{
     align-items: center;
     text-align: center;
     font-family: "DM Sans", sans-serif;
-    color: var(--Neutral-200);
+    color: var(--Neutral-0);
+    font-size: 700;
   }
  
 .error-state{
@@ -473,6 +474,10 @@ input:hover{
         margin-bottom: 20px;
         
 
+     }
+     .no-results{
+        font-size: 2rem;
+        font-weight: 700;
      }
      /* #info-banner {
         background-color: #f0a500;
