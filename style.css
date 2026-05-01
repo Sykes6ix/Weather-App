@@ -474,6 +474,13 @@ input:hover{
         
 
      }
+     /* #info-banner {
+        background-color: #f0a500;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        display: none;
+} */
       .error-state{
         display: flex;
         justify-content: center;

@@ -20,6 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Units dropdown toggle
   const unitsToggle = document.getElementById('units-toggle');
   const unitsMenu = document.getElementById('units-menu');
+
+  //  window.onload = () => {
+  //   document.getElementById('info-banner').style.display = 'block';
+  // }
+
+  function closeBanner() {
+    document.getElementById('info-banner').style.display = 'none';
+}
   
   if (unitsToggle && unitsMenu) {
     unitsToggle.addEventListener('click', (e) => {
@@ -134,7 +142,7 @@ async function fetchWeatherData(city) {
     feelsLike.textContent = `${Math.floor(weatherData.main.feels_like)}°C`;
     humidity.textContent = `${weatherData.main.humidity}%`;
     wind.textContent = `${Math.floor(weatherData.wind.speed)} km/hr`;
-    precipitation.textContent = `${weatherData.rain?.['1h'] ?? 0} mm`;
+    precipitation.textContent = `${weatherData.clouds.all}%`;
 
     // main weather icon
     const condition = weatherData.weather[0].main;
