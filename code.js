@@ -135,7 +135,7 @@ async function fetchWeatherData(city) {
     heading.style.display = 'flex';
 
     // city name
-    cityName.textContent = weatherData.name;
+    cityName.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
 
     // current weather
     currentTemperature.textContent = `${Math.floor(weatherData.main.temp)}°C`;
